@@ -30,22 +30,26 @@ ENDFOR
 
 3. Create a function that searches for a specific entry in a phonebook.
 
-INIT a list of names
-IF the index of the name is greater than -1 THEN
-	RETURN "Found a match"
+INIT an entry
+FOR each name in the phonebook
+IF a name matches the entry THEN
+	RETURN entry
 ELSE
-	RETURN "No result" 
+	RETURN "Not found" 
 END IF
 
 4. Using the pseudocode you wrote for the previous question, implement it in any computer language of your choice.
 
-function finder() {
-var s = ["Joe", "James", "Jill"];
-if ( s.indexOf("James") > -1 ) {
-return "Found a match";
-} else {
-    return "No result";
-}
+ function finder (entry) {
+
+            for (i = 0; i < phonebook.length; i++) {
+                if (phonebook[i] === entry) {
+                    return phonebook[I]
+                } else {
+                    return "Not Found"
+                }
+            }
+        }
 	
 
 	
