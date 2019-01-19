@@ -1,0 +1,54 @@
+Exercises:
+
+1a. Use an array input: [“Vivian”, “Ava”, “Josh”, “Patrick”, “Mike”]
+
+INIT guestRiders to an empty array
+SET guestRiders [FIRST INDEX] to Vivian
+SET guestRiders [Second INDEX] to Ava
+SET guestRiders [THIRD INDEX] to Josh
+SET guestRiders [FOURTH INDEX] to Patrick
+SET guestRiders [FIFTH INDEX] to Mike
+
+1b. Insert a new person, “Mary” at the end of the line. In other words, you should insert Mary after Mike. 
+
+PUSH Mary to guestRiders
+
+1c. Find a person in line named “Josh.” This function should return the position of 2 in the array, (recall that arrays are 0-based).
+
+INIT rider to FINDINDEX name
+IF name equals Josh THEN
+	RETURN index number
+END IF
+PRINT rider
+
+1d. Find person in line named “Emily”. What should your function return if it does not find the item in the array?
+
+INPUT Emily
+
+FOR each person in the array
+
+IF Emily is in the array THEN
+	
+	RETURN true
+
+ELSE 
+	RETURN false
+END IF
+
+END FUNCTION
+
+1e.What if Ava wants to allow a friend, "Melissa", to cut in line in front of her? How would you code this so Melissa appears before Ava?
+
+SPLICE Melissa to start at [SECONDINDEX] to array 
+
+1f. If Patrick wants to leave the line how would delete him from the array?
+
+SPLICE at the start of the [THIRDINDEX] to remove Patrick from the array
+
+2. Provide another real-world example that you can model using a data structure.
+
+A: Registering at the ER
+
+3. How would your data structure allow developers to access and manipulate your data?
+
+A: Devolopers can manipulate and access the  data in terms of priority, stance in line, etc. For example, if a patient with a serious illness enters, he/she can jump in front due to the severity of the problem. It helps manage the hospital keeping track of patients coming in and out, accessing their medical information, etc. 
