@@ -40,17 +40,15 @@ END IF
 
 4. Using the pseudocode you wrote for the previous question, implement it in any computer language of your choice.
 
- function finder (entry) {
+function finder(entry) {
 
             for (i = 0; i < phonebook.length; i++) {
                 if (phonebook[i] === entry) {
-                    return phonebook[I]
-                } else {
-                    return "Not Found"
+                    return entry;
                 }
             }
+            return "Not found";
         }
-	
 
 	
 
