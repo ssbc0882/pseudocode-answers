@@ -1,0 +1,81 @@
+Exercises:
+
+1. What is the main difference between a stack and a queue?
+
+A:  The stacks arranges elements in  last-in-first-out order (LIFO). The queue arranges elements in first-in-first-out order(FIFO).
+
+2. What are the similarities between stacks and queues?
+
+A: Both work and manipulate data in terms of priority. 
+
+3. Imagine you are an engineer tasked with implementing the UNDO and REDO options in a. Word processor such as Microsoft Word. Which data structure you use for each option and why?
+
+A: With UNDO option, I would use the stack data structure because it helps create the data flow by removing dates the server would be quicker. For REDO, I would use the queue data structure because it's repeating the same action. If it does an action, there are other requests that are in queue. Using queue would put the REDO option in queue with the other requests. 
+
+Programming Questions:
+
+1. Given a string, reverse it using a stack. For example, the string "Bloc!"
+Should be converted to "!colB".
+
+Function reverse(string) {
+
+var stack = [];
+for (var i = 0; i < string.length; i++) {
+	stack.push(string[i]);	
+}
+	var reversed = "";
+
+	while (stack.length>0) {
+	reversed += stack.pop();
+}
+return reversed;
+}
+
+2. Implement the pop method of a stack using one queue. Make a FIFO data structure mirror the functionality of a LIFO data structure. Since the internal list is not the same as defined in the checkpoint, it may help to rewrite the pseudocode first.
+
+var guests = ["John","Scott","Billy","Olm"];
+
+class Stack{
+  
+  constructor() {
+    
+    this.pop = function (queue) {
+  
+  var newQueue = [];
+  var deletedItem = [];
+  
+  for(var i =0; i<queue.length;i++) {
+    if(i === queue.length-1) {
+     	deletedItem.push(queue[i]);
+    } else {
+      newQueue.push(queue[i]);
+    }
+  }
+  return deletedItem;
+}
+}
+
+}
+
+var c = new Stack();
+console.log(c.pop(guests))
+
+1. Implement the enqueue and dequeue methods defined in the checkpoint inside your own Queue class. 
+
+Class Queue {
+
+constructor() {
+	this.elements = []
+}
+
+enqueue (element) {
+
+	return this.elements.push(element);
+}
+
+dequque (element) {
+
+	return this.elements.shift(element);
+}
+
+}
