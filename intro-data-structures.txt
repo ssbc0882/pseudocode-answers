@@ -17,14 +17,14 @@ guestRiders.push("Mary");
 
 1c. Find a person in line named “Josh.” This function should return the position of 2 in the array, (recall that arrays are 0-based).
 
-var rider=  guests.findIndex(name =>name === "Josh");
+var rider=  guestRiders.findIndex(name =>name === "Josh");
 
 
 1d. Find person in line named “Emily”. What should your function return if it does not find the item in the array?
 
 function findName(name) {
 
-  for(var i = 0; i<guests.length; i++){
+  for(var i = 0; i<guestRiders.length; i++){
     if(guests[i] ===name) {
       return true;
     } 
@@ -36,11 +36,28 @@ findName("Emily");
 
 1e.What if Ava wants to allow a friend, "Melissa", to cut in line in front of her? How would you code this so Melissa appears before Ava?
 
-guests.splice(1,0,"Melissa");
+
+function skipLine(name, friendName) {
+  var indexNumber = guestRiders.indexOf(name);
+  guestRiders.splice(indexNumber, 0, friendName);
+  return guestRiders;
+}
+
+skipLine("Ava", "Melissa")
+
 
 1f. If Patrick wants to leave the line how would delete him from the array?
 
-guests.splice(3,1);
+function leaveLine (name) {
+  var indexNumber = guestRiders.indexOf(name);
+  if(indexNumber > -1) {
+    guestRiders.splice(indexNumber, 1);
+  }
+  return guestRiders;
+}
+
+leaveLine("Patrick")
+
 
 2. Provide another real-world example that you can model using a data structure.
 
