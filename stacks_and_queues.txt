@@ -10,7 +10,7 @@ A: Both work and manipulate data in terms of priority.
 
 3. Imagine you are an engineer tasked with implementing the UNDO and REDO options in a. Word processor such as Microsoft Word. Which data structure you use for each option and why?
 
-A: With UNDO option, I would use the stack data structure because it helps create the data flow by removing dates the server would be quicker. For REDO, I would use the queue data structure because it's repeating the same action. If it does an action, there are other requests that are in queue. Using queue would put the REDO option in queue with the other requests. 
+A: My option would be to use two stacks to keep track. The user has "performed" operations. If he/she wants to UNDO, the operations are popped from "performed" to "recall". If the user wants to REDO, pop the items from "recall" and push them back to "performed" stack.
 
 Programming Questions:
 
