@@ -2,7 +2,7 @@ Exercises:
 
 1. What are some pros and cons of using linked lists instead of arrays?
 
-A: Linked lists take up less memory than arrays. Linked lists are independent in memory, so the operating system can use any memory location to find the location. Another positive is that linked lists can effectively delete and insert better than arrays. A con for linked lists is that once you locate a linked list, you can't start it within the list. It must start at the first node (head) and in order. Whereas in array, you can access an element within.
+A: Linked lists can use multiple data types. Linked lists allocate memory for each memory separately and when necessary. In an array, it allocates the memory for all of its elements. A con for linked lists is that once you locate a linked list, you can't start it within the list. It must start at the first node (head) and in order. Whereas in array, you can access an element within. Linked lists can consume more memory than arrays.
 
 2. Come up with a real word example of a linked list.
 
@@ -107,7 +107,7 @@ function LinkedList() {
 
 3. Given an unsorted singly linked list, reverse it. 
 
-      function LinkedList() {
+     function LinkedList() {
             this.head = null;
         }
 
@@ -159,17 +159,19 @@ function LinkedList() {
 
         LinkedList.prototype.reverse = function () {
 
-            var currentNode = this.head,
-                previousNode = null;
+            var currentNode = this.head;
+            var previousNode = null;
+            var nextNode;
+
             while (currentNode) {
-                var nextNode = currentNode.next;
+                nextNode = currentNode.next;
                 currentNode.next = previousNode;
                 previousNode = currentNode;
                 currentNode = nextNode;
-                console.log(previousNode);
-            }
-            return previousNode;
 
+            }
+            this.head = previousNode;
+            return previousNode;
         }
 
         var list = new LinkedList();
@@ -181,5 +183,6 @@ function LinkedList() {
         list.push('c');
         list.duplicate();
         list.reverse();
+
 
 
