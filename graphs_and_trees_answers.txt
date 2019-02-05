@@ -1,0 +1,242 @@
+Exercises
+
+1. What is a binary tree and what makes it unique to other trees?
+
+A: A binary tree is is a data structure where each Node may point to a left or right child. To search for a node in a Binary Search Tree is dependent upon where the nodes were inserted.
+
+2. What is a heuristic?
+
+A: A heuristic are guesses that an algorithm makes to solve a complex problem quickly by sacrificing accuracy
+
+3. What is another problem besides the shortest-path problem that requires the use of heuristics?
+
+A: First impressions and pros and con arguments from a combination of experts and non-experts about a topic. 
+
+4. What is the difference between a depth-first search and a breadth-first search?
+
+A: A depth-first search is a process of traveling down a single branch to get the desired element. If it's not found, it moves upward to the root Node, and repeats the process with the unvisited nodes. With a breadth-first node, the desired element is searched through an entire row of Node before we proceed to the next. It goes down levels to find the element. 
+
+5. Explain in your own words what an undirected, a-cyclic, unweighted graph is?
+
+A: Its start and end location is ambiguous. The process does not repeat in a loop. The time to travel between Node is not a factor. It's depends on the size of each particular Node. 
+
+6. What kind of graph is a binary search tree?
+
+A: An undirected, a-cyclic, weighted graph.
+
+Programming Questions
+
+
+1. Given a Binary Search Tree and a value, write a function that checks to see whether the value exists within the tree.
+
+Example: The value 10 exists in the tree. The value 23 does not exist in the tree.
+
+ class Node {
+            constructor(data, left = null, right = null) {
+
+                this.data = data;
+                this.left = left;
+                this.right = right;
+            }
+        }
+
+        class BSearchTree {
+            constructor() {
+
+                this.root = null;
+            }
+
+            add(data) {
+                const node = this.root;
+                if (node === null) {
+                    this.root = new Node(data);
+                    return;
+
+                } else {
+                    const searchTree = function (node) {
+
+                        if (data < node.data) {
+                            if (node.left === null) {
+                                node.left = new Node(data);
+                                return;
+                            } else if (node.left !== null) {
+                                return searchTree(node.left);
+                            }
+
+                        } else if (data > node.data) {
+                            if (node.right === null) {
+                                node.right = new Node(data);
+                                return;
+                            } else if (node.right !== null) {
+                                return searchTree(node.right);
+                            }
+
+                        } else {
+                            return null;
+                        }
+                    };
+                    return searchTree(node);
+                }
+            }
+
+            isPresent(data) {
+                let current = this.root;
+
+                while (current) {
+                    if (data === current.data) {
+                        return true;
+                    }
+
+                    if (data < current.data) {
+                        current = current.left;
+                    } else {
+                        current = current.right;
+                    }
+                }
+
+                return false;
+            }
+
+
+        }
+
+        const bst = new BSearchTree();
+
+        bst.add(4);
+        bst.add(2);
+        bst.add(6);
+        bst.add(1);
+        bst.add(3);
+        bst.add(5);
+        bst.add(7);
+        bst.add(8);
+        console.log(bst.isPresent(8));
+        console.log(bst.isPresent(9));
+
+
+
+2. Given a Binary Search Tree and two nodes, n1 and n2, write a function that finds the distance between the two nodes.
+
+Example: The distance between the nodes 4 and 10 is 4. The distance between nodes 8 and 10 is 1. The distance between the nodes 1 and 14 is 4. 
+
+
+ class Node {
+            constructor(data, left = null, right = null) {
+
+                this.data = data;
+                this.left = left;
+                this.right = right;
+            }
+        }
+
+        class BSearchTree {
+            constructor() {
+
+                this.root = null;
+            }
+
+            add(data) {
+                const node = this.root;
+                if (node === null) {
+                    this.root = new Node(data);
+                    return;
+
+                } else {
+                    const searchTree = function (node) {
+
+                        if (data < node.data) {
+                            if (node.left === null) {
+                                node.left = new Node(data);
+                                return;
+                            } else if (node.left !== null) {
+                                return searchTree(node.left);
+                            }
+
+                        } else if (data > node.data) {
+                            if (node.right === null) {
+                                node.right = new Node(data);
+                                return;
+                            } else if (node.right !== null) {
+                                return searchTree(node.right);
+                            }
+
+                        } else {
+                            return null;
+                        }
+                    };
+                    return searchTree(node);
+                }
+            }
+
+            isPresent(data) {
+                let current = this.root;
+
+                while (current) {
+                    if (data === current.data) {
+                        return true;
+                    }
+
+                    if (data < current.data) {
+                        current = current.left;
+                    } else {
+                        current = current.right;
+                    }
+                }
+
+                return false;
+            }
+
+            distance(data) {
+
+                let count = 0;
+                let values = [];
+                let current = this.root;
+                while (current !== null) {
+                    values[count] = current.data;
+                    if (data > current.data) {
+                        if (current.right !== null) {
+                            count++;
+                        }
+                        current = current.right;
+                    }
+                    else if (data < current.data) {
+                        if (current.left !== null) {
+                            count++;
+                        }
+                        current = current.left;
+                    }
+                    else {
+                        values.shift();
+                        return values;
+                    }
+                }
+                return [];
+            }
+
+            distanceBetween(node1, node2) {
+                let distance1 = this.distance(node1);
+                let distance2 = this.distance(node2);
+                let maxLength = distance1 > distance2 ? distance2 : distance1;
+                let distanceLca = 0;
+                while (distanceLca < maxLength && distance1[distanceLca] === distance2[distanceLca]) {
+                    distanceLca++;
+                }
+                return distance1.length + distance2.length - (2 * distanceLca);
+            }
+        }
+
+        const bst = new BSearchTree();
+
+        bst.add(4);
+        bst.add(2);
+        bst.add(6);
+        bst.add(1);
+        bst.add(3);
+        bst.add(5);
+        bst.add(7);
+        bst.add(8);
+        console.log(bst.isPresent(8));
+        console.log(bst.isPresent(9));
+
+        console.log(bst.distanceBetween(2, 5));
+        console.log(bst.distanceBetween(4, 2));
