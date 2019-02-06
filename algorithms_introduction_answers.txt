@@ -1,0 +1,51 @@
+Exercises
+
+1. Using proper pseudo-code, describe the following primitive algorithms:
+	- Making coffee
+	- Washing dishes
+	- A choice of your own
+
+A: 
+
+making coffee
+
+	GET filter, glass of water, and your choice of coffee roast
+	SET filter into filter basket
+	CALCULATE one cup of coffee roast onto the filter
+	CALCULATE water
+	SET water into coffee machine
+	INIT machine to start brewing
+
+Washing dishes
+
+	INIT water
+	INIT dishes
+	INIT scrub
+
+	FOR each dirty dish
+	
+	scrub each dish
+
+	ENDFOR
+	
+A choice of your own: shave face
+
+	GET razor and shaving cream
+	SET water to face
+	DETERMINE shaving cream onto face
+	INIT razor to targeted facial areas
+	
+	
+
+2. As with the knot algorithm, there may be more than one way to solve the problem. It is essential to try to pick the best algorithm for a situation. Name three companies who created an algorithm that made them successful, e.g., Google's search algorithm. It doesn't need to be a tech example (such as recipe or manufacturing a product). Google's algorithm produces more relevant results than other search engines; what about each of your cases make them stand out?
+
+A: 
+1) Kayak. Kayak produces results from many different websites on the best value. Their algorithm makes guess if the price is over, under, or at value to buy. 
+2) Starbucks. People can order from a variety of options. They can order in the store, online, or an app.
+3) Amazon. Users can choose their results in terms of relevance, price, reviews, etc. It also suggest similar items others ordered to help improve your search
+
+
+3. Hypothesize about what constitutes an efficient algorithm versus an inefficient algorithm.
+
+
+The goal of an algorithm is do something. A good algorithm accomplishes the goal with efficiency and clarity. A bad one are ones that are complex to understand. With time being an important factor in people's lives, having something convenient and quick is a high priority to consider.  
