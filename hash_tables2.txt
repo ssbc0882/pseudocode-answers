@@ -114,30 +114,52 @@ const hash = (key, max) => {
 
 8. Build a system that allows digital copies of newspapers to be entered and searched by publisher and publication date. Use hash tables to store the necessary data. 
 
-     class Newspaper {
+     class HashTable {
             constructor() {
-                this.hash = {}
+                this.count = 10;
+                this.buckets = [];
             }
 
-            add(publisher, date) {
-                this.hash[publisher] = [publisher, date];
-                this.hash[date] = [publisher, date];
-            }
-
-            find(publisherOrDate) {
-                if (!this.hash[publisherOrDate]) {
-                    return "Not found";
-                } else {
-                return this.hash[publisherOrDate]
+            hash(key) {
+                var hash = 0;
+                for (var i = 0; i < key.length; i++) {
+                    hash += key.charCodeAt(i)
                 }
+                return hash;
+            }
+
+            add(entry) {
+                var key = this.hash(entry.date);
+                var arrayIndex = key % this.count;
+                this.buckets[arrayIndex] = entry;
+            }
+
+            get(date) {
+                var key = this.hash(date);
+                var arrayIndex = key % this.count;
+                return this.buckets[arrayIndex];
             }
         }
 
-        let sn = new Newspaper();
-        sn.add('NY Times', '11/01/18');
-        sn.add('USA Today', '09/25/17');
+        class Newspaper {
+            constructor(publisher, date, article) {
+                this.publisher = publisher;
+                this.date = date;
+                this.article = article;
+            }
+        };
 
-        console.log(sn.find('USA Today'));
-        console.log(sn.find('NY Times'));
-        console.log(sn.find('09/25/17'));
-        console.log(sn.find('03/21/11'));
+        var sn = new Newspaper('NY Times', '01/31/14', 'Life of Dogs');
+
+        var usa = new Newspaper('USA Today', '02/22/15', 'Life of Cats')
+
+        var hashTable = new HashTable();
+
+        hashTable.add(sn);
+        hashTable.add(usa);
+
+        console.log(sn);
+        console.log(usa);
+
+        console.log(hashTable.get('01/31/14'));
+        hashTable.get('02/22/15');
