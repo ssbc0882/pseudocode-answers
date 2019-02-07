@@ -114,52 +114,53 @@ const hash = (key, max) => {
 
 8. Build a system that allows digital copies of newspapers to be entered and searched by publisher and publication date. Use hash tables to store the necessary data. 
 
-     class HashTable {
+       class HashTable {
             constructor() {
-                this.count = 10;
-                this.buckets = [];
+                this.storage = [];
+                this.max = 25;
             }
 
-            hash(key) {
-                var hash = 0;
-                for (var i = 0; i < key.length; i++) {
-                    hash += key.charCodeAt(i)
+            hash(string, max) {
+                let hash = 0;
+
+                for (let i = 0; i < string.length; i++) {
+                    hash += string.charCodeAt(i);
                 }
-                return hash;
+                return hash % max;
             }
 
-            add(entry) {
-                var key = this.hash(entry.date);
-                var arrayIndex = key % this.count;
-                this.buckets[arrayIndex] = entry;
+            add(value) {
+                var key = value.publisher + value.date;
+                var index = this.hash(key, this.max);
+
+
+                if (this.storage[index] === undefined) {
+                    this.storage[index] = value;
+                } else {
+                    for (var i = 0; i < storage[index].length; i++) {
+                        if (storage[index][i] === key) {
+                            storage[index][i] = value;
+
+                        }
+                    }
+                }
             }
 
-            get(date) {
-                var key = this.hash(date);
-                var arrayIndex = key % this.count;
-                return this.buckets[arrayIndex];
+            lookup({ publisher, date }) {
+                let key = publisher + date;
+                let index = this.hash(key, this.max);
+                console.log(index);
+                if (!this.storage[index]) {
+                    return "not found";
+                } else {
+                    return this.storage[index].article;
+                }
             }
         }
 
-        class Newspaper {
-            constructor(publisher, date, article) {
-                this.publisher = publisher;
-                this.date = date;
-                this.article = article;
-            }
-        };
+        var ht = new HashTable();
 
-        var sn = new Newspaper('NY Times', '01/31/14', 'Life of Dogs');
+        ht.add({ publisher: "NY Times", date: "09/22/16", article: "Life of Dogs" });
+        ht.add({ publisher: "USA Today", date: "08/20/18", article: "Life of Cats" });
+        console.log(ht.lookup({ publisher: "USA Today", date: "08/20/18" }))
 
-        var usa = new Newspaper('USA Today', '02/22/15', 'Life of Cats')
-
-        var hashTable = new HashTable();
-
-        hashTable.add(sn);
-        hashTable.add(usa);
-
-        console.log(sn);
-        console.log(usa);
-
-        console.log(hashTable.get('01/31/14'));
-        hashTable.get('02/22/15');
