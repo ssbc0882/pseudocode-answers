@@ -1,0 +1,38 @@
+Exercises
+
+1. What is time complexity and what is its relation to algorithms?
+
+A: Time complexity estimates the time it takes to execute a program or function. It's important to see how the algorithm's speed changes based on its input size. 
+
+2. What is runtime?
+
+A: Runtimes refers to physical time duration of an algorithm. 
+
+3. How is the runtime of an algorithm calculated?
+
+A: We add up how many instructions the algorithm will execute as a function of the size of its input. Then we simplify the expression to the largest term and drop and constants. 
+
+4. Name the six types of algorithm growth rates we saw in this checkpoint and list them in order of most efficient to least efficient. Now Google another algorithmic growth rate not covered and place it in the correct spot in your list.
+
+A: Least to most efficient: O(2 ^n), O(n^2), O (n log n), O(n), O (log n), O(1). 
+Cubic growth rate. O(n^3). From least to most efficient: O (n^3), O(2 ^n), O(n^2), O (n log n), O(n), O (log n), O(1). 
+
+5. Chooses one of the algorithmic growth rates from the last question and make a comparison to a real-life situation.
+
+A: O (log n). Looking for a name in the telephone book. The person goes to the middle of the book. If the name is lower or higher than another name, then he/she will go to the lower half or upper half of the book. The person will repeat the process until they find the name. 
+
+6. Determine the time complexity of the following snippet of code. It is commonly known as a linear search.
+
+A: The time complexity is O(n)
+
+7.Determine the time complexity of the following snippet of code.
+
+A: There is a nested for loop. The time complexity is O(n^2)
+
+8. Determine the time complexity of the following snippet of code. It is commonly known as the Fibonacci sequence.
+
+A: The time complexity is O(2^n) because this sequence require recursive functions.
+
+9. Out of the code snippets you just saw, which is the most time efficient?
+
+A: The first one because it's has the same runtime regardless of input size of the array.
