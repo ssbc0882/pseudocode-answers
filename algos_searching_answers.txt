@@ -1,0 +1,63 @@
+Exercises
+
+Short Answer:
+
+1. What is a real-life scenario that uses linear search?
+
+A: Finding an item at an online search by tying the item in the search bar.
+
+2. What is a real-life scenario that uses binary search?
+
+A: Finding a person in an alphabetical database by last name
+
+3. Given the alphabetically sorted collection in this checkpoint, how many iterations would it take to find the value G using linear search?
+
+A: It will start at the beginning of the collection and go through to each item until it hits its target.
+
+4. Given the alphabetically sorted collection in this checkpoint, how many iterations would it take to find the value G using binary search?
+
+A: It looks at the middle item of the collection and determine if the target is greater or lesser than the middle item. Determining the result, it will discard either the lower or upper half of the collection. From that portion of the collection, it will find the middle item and determines if the new middle item is greater or lesser than the targeted value. It will repeat the same process until the target is found. 
+
+5. Given an unsorted collection of a million items, which algorithm would you choose between linear search and binary search? Explain your reasoning.
+
+A: Linear search because the collection is unsorted. 
+
+6. Given a sorted collection of a million items, which algorithm would you choose between linear search and binary search? Explain your reasoning.
+
+A: Binary search because finding the target works better with sorted collections.
+
+Programming Assignment:
+
+1. You and a friend have set a wager to see who can find the word "Albatross" in the dictionary the fastest. Write a program to follow you to win the bet.
+
+    var data = ["aarvark", "albatross", "ant", "baboon", "corgi", "hyena", "lion", "mouse", "panda"];
+        function binarySearch(array, word) {
+            let left = 0;
+            let right = array.length - 1;
+
+            while (left <= right) {
+                let midpoint = Math.floor((left + right) / 2);
+                if (array[midpoint] === word) {
+                    return midpoint;
+                } else if (array[midpoint] < word) {
+                    left = midpoint + 1;
+                } else {
+                    right = midpoint - 1;
+                }
+            }
+            return null;
+        }
+
+2. You work at a pet store, and a child has asked you to net the only white-spotted goldfish from the fish tank. Write a program that will help you net the right fish.
+
+var fishes = ["Jaws", "Nemo", "Meg", "white-spotted goldfish", "Flipper"];
+
+        function fishSearch(array, target) {
+            for (var i = 0; i < array.length; i++) {
+                if (array[i] === target) {
+                    return target;
+                }
+            }
+            return "not found";
+        }
+
