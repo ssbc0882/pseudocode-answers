@@ -71,45 +71,57 @@ A: Hash tables are intended to be stored as collections of similar data, whereas
 
 7. Build a system that allows a store owner to track their store's inventory using a hash table for storage. 
 
-const hash = (key, max) => {
-            let hash = 0;
-
-            for (let i = 0; i < key.length; i++) {
-                hash += key.charCodeAt(i);
-            }
-            return hash % max;
-        }
-
-        class HashTable {
+  class HashTable {
             constructor() {
-                this.max = 25;
-                this.buckets = Array(this.max);
+                this.storage = [];
+                this.max = 1000;
+            }
 
-                for (let i = 0; i < this.buckets.length; i++) {
-                    this.buckets[i] = new Map();
+            hash(string, max) {
+                var hash = 0;
+
+                for (let i = 0; i < string.length; i++) {
+                    hash += string.charCodeAt(i);
+                }
+                return hash % max;
+            }
+
+            add(value) {
+                var key = value.genre;
+                var index = this.hash(key, this.max);
+
+
+                if (this.storage[index] === undefined) {
+                    this.storage[index] = value;
+                } else {
+                    for (var i = 0; i < this.storage[index].length; i++) {
+                        if (this.storage[index][i] === key) {
+                            this.storage[index][i] = value;
+
+                        }
+                    }
                 }
             }
-            add(key, value) {
-                let index = hash(key, this.max);
-                this.buckets[index].set(key, value);
 
+            lookup({ genre }) {
+                var key = genre;
+                var index = this.hash(key, this.max);
+                if (!this.storage[index]) {
+                    return "not found";
+                } else {
+                    return this.storage[index].count;
+                }
             }
-
-            inventory(key) {
-                let index = hash(key, this.max);
-                return this.buckets[index].get(key);
-
-            }
-
-
         }
 
         let ht = new HashTable();
 
-        ht.add("Horror", 2000);
-        ht.add("Comics", 3000);
-        ht.add("Romance", 1500);
-        console.log(ht.inventory("Horror"));
+        ht.add({ genre: "Horror", count: "2000" });
+        ht.add({ genre: "Comedy", count: "1500" });
+        ht.add({ genre: "Adventure", count: "4000" });
+        ht.add({ genre: "Romance", count: "5000" });
+
+        console.log(ht.lookup({ genre: "Romance" }));
 
 
 8. Build a system that allows digital copies of newspapers to be entered and searched by publisher and publication date. Use hash tables to store the necessary data. 
