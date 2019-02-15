@@ -1,0 +1,52 @@
+Exercises:
+
+1. Write pseudocode for bubble sort.
+
+FUNCTION bubbleSort(array)
+
+FOR i = FIRST INDEX of array to LAST INDEX of array -1
+	FOR j = FIRST INDEX of array to LAST INDEX of array - 1
+	
+	IF array[j] > array[array[j] +1] THEN
+	SET temp to array[j]
+	SET array[j] to array[j + 1]
+	SET array[j + 1] to temp
+	END IF
+END FOR
+END FOR
+RETURN array
+
+END FUNCTION
+				
+2. Write pseudocode for quick sort.
+
+FUNCTION quickSort (array)
+
+IF array.length < 2 THEN
+	RETURN ARRAY
+END IF
+
+SET PIVOT to FIRST INDEX of array
+SET left to []
+SET right to []
+
+FOR i = 1 to LAST INDEX of array
+IF array[i] < pivot THEN
+	APPEND left to array
+ELSE 
+	APPEND right to array
+END IF
+
+END FOR
+
+RETURN quickSort(left).concat(pivot, quickSort(right))
+
+END FUNCTION
+
+3. We talked about time complexity in a previous checkpoint, and how to get an idea of the efficiency of an algorithm. After looking at the pseudocode for the above sorting methods, identify why merge sort and quick sort are much more efficient than the others. Walking through each algorithm with a few sample collections may help. 
+
+A: Quick sort doesn't require extra storage space. It makes it quicker to run the algorithm. Merge sort is better for large data structures such as linked lists. Merge sort is more stable than the other sorts. It's elements maintain their original position in relation to each other. 
+
+4. All of the sorts addressed in this checkpoint are known as comparison sorts. Research bucket sort and explain how it works. What is the ideal input for bucket sort?
+
+A: Bucket sort works by arranging elements into "buckets" and then sorted using another sort. It typically utilizes insertion sort and then merged into a sorted list. Bucket sort works best when it can distribute elements evenly throughout the buckets. It performs at its worst when all the elements are distributed to the same bucket. 
